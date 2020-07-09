@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Tutorial
+from .models import Tutorial, TutorialCategory, TutorialSeries
 from django.db import models
 from tinymce import TinyMCE
 
@@ -15,6 +15,8 @@ class TutorialAdmin(admin.ModelAdmin):
 
     fieldsets = [
         ("Title and Date", {"fields": ["tutorial_title", "tutorial_published"]}),
+        ("URL", {"fields": ["tutorial_slug"]}),
+        ("Series", {"fields": ["tutorial_series"]}),
         ("Content", {"fields": ["tutorial_content"]}),
 
     ]
@@ -24,3 +26,5 @@ class TutorialAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Tutorial, TutorialAdmin)
+admin.site.register(TutorialCategory)
+admin.site.register(TutorialSeries)
